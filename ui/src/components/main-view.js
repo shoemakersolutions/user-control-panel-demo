@@ -27,6 +27,7 @@ export const MainView = () => {
         dispatch(fetchExternalUsers())
             .then(() => {
                 dispatch(fetchUsers());
+                dispatch(fetchCompanies());
             });
     };
 

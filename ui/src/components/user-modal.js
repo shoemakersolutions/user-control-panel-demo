@@ -12,8 +12,7 @@ import {
     InputGroup,
     Input,
     InputLeftAddon,
-    Select,
-    Option
+    Select
   } from '@chakra-ui/react'
 import { formInputObjectParser } from '../common/form-input-object-parser';
 import { userModalFormTemplate } from '../form-templates/user-modal-form-template';
@@ -51,7 +50,7 @@ export const UserModal = ({ user, companies, isOpen, onClose, onSubmit }) => {
     const handleCompanyChange = event => {
         setUserObject({
             ...userObject,
-            company: !event.target.value ? { id: null } : companies?.find(c => c.id === event.target.value),
+            company: !event.target.value ? null : companies?.find(c => c.id === event.target.value),
         });
     };
 

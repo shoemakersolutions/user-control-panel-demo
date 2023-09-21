@@ -32,7 +32,7 @@ export class UserManagementService {
         for (const user of addUsersDto) {
             const userToSave = { ...user };
 
-            if (user.company?.id) {
+            if (user.company) {
                 userToSave.company =
                     await this.companyRepository.findOne({ where: { name: user.company.name } }) ||
                     await this.companyRepository.save(this.companyRepository.create(user.company));
