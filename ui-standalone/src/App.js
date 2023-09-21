@@ -1,6 +1,5 @@
 import React from 'react';
 import { Router } from './router/router';
-import './App.css';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import { ChakraProvider } from '@chakra-ui/react'

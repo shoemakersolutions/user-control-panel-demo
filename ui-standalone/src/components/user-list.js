@@ -12,7 +12,7 @@ import {
     Checkbox
   } from '@chakra-ui/react'
 
-export const UserList = ({ users, onCheckboxChange, onRowClick }) => {
+export const UserList = ({ users, onCheckboxChange, onRowClick, checkboxStatus }) => {
     const [listState, setListState] = useState({
         listContent: [],
         sortState: {
@@ -80,7 +80,6 @@ export const UserList = ({ users, onCheckboxChange, onRowClick }) => {
         });
     }, [users]);
 
-
     return (
         <TableContainer>
             <Table variant='simple'>
@@ -101,8 +100,8 @@ export const UserList = ({ users, onCheckboxChange, onRowClick }) => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {users && listState.listContent?.map((u, idx) => (
-                        <React.Fragment key={`fgmt_${idx}`}>
+                    {listState.listContent?.map((u, idx) => (
+                        <React.Fragment key={`frgmt_${idx}`}>
                             <Tr
                                 key={`row_${idx}`}
                                 transition='all 0.2s'
@@ -112,7 +111,8 @@ export const UserList = ({ users, onCheckboxChange, onRowClick }) => {
                                 <Td key={`checkbox_cell_${idx}`}>
                                     <Checkbox
                                         key={`checkbox_${idx}}`}
-                                        onChange={event => onCheckboxChange(event.target.checked, u.id)}
+                                        onChange={event => onCheckboxChange(event.target.checked, u.id, idx)}
+                                        isChecked={Boolean(checkboxStatus.find(c => c.idx === idx))}
                                     />
                                 </Td>
                                 {columns.map((c, c_idx) => (

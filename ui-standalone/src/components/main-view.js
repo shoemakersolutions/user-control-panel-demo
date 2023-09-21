@@ -18,7 +18,8 @@ export const MainView = () => {
 
 
     const handleUserDelete = async () => {
-        dispatch(deleteUser(checkedUsers));
+        dispatch(deleteUser(checkedUsers.map(c => c.id)));
+        setCheckedUsers([]);
      };
 
     const openUserModal = user => {
@@ -36,11 +37,11 @@ export const MainView = () => {
         closeUserModal();
     };
 
-    const handleCheckboxChange = (checked, id) => {
+    const handleCheckboxChange = (checked, id, idx) => {
         setCheckedUsers(
             checked
-                ? [...checkedUsers, id]
-                : checkedUsers.filter(c => c !== id)
+                ? [...checkedUsers, { id, idx }]
+                : checkedUsers.filter(c => c.id !== id)
         );
     };
 
@@ -92,6 +93,7 @@ export const MainView = () => {
                 <UserList
                     users={users}
                     onCheckboxChange={handleCheckboxChange}
+                    checkboxStatus={checkedUsers}
                     onRowClick={openUserModal}
                 />
             </div>

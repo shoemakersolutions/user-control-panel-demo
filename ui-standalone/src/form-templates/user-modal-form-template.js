@@ -50,11 +50,9 @@ export const userModalFormTemplate = [
     {
         label: 'Company catch phrase',
         field: 'company.catchPhrase',
-        disabled: true
     }, 
     {
         label: 'Company bs',
         field: 'company.bs',
-        disabled: true
     }
 ];
