@@ -1,0 +1,50 @@
+name: user-control-panel-demo
+
+services:
+  db:
+    build:
+      context: db
+      target: db
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=demopwd
+      - POSTGRES_USER=postgres
+    networks:
+      - dev-network
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+  ui:
+    build:
+      context: ui
+      target: devui
+    networks:
+      - dev-network
+    ports:
+      - 3000:3000
+    volumes:
+      - ./ui/src:/usr/src/app/src
+  server:
+    build:
+      context: server
+      target: devserver
+    environment:
+      - DB_PASSWORD=demopwd
+      - DB_USER=postgres
+      - DB_HOST=db
+      - DB_PORT=5432
+    command: ["npm", "run", "start:dev"]
+    networks:
+      - dev-network
+    ports:
+      - 3001:3001
+    volumes:
+      - ./server/src:/usr/src/app/src
+
+networks:
+  dev-network: {}
+
+volumes:
+  db-data: {}
+

@@ -1,0 +1,8 @@
+{
+    "type": "postgres",
+    "host": "db",
+    "port": 5432,
+    "username": "postgres",
+    "password": "demopwd",
+    "database": "userservice"
+}
