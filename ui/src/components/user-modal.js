@@ -51,7 +51,7 @@ export const UserModal = ({ user, companies, isOpen, onClose, onSubmit }) => {
     const handleCompanyChange = event => {
         setUserObject({
             ...userObject,
-            company: companies?.find(c => c.id === event.target.value),
+            company: !event.target.value ? { id: null } : companies?.find(c => c.id === event.target.value),
         });
     };
 
@@ -83,6 +83,7 @@ export const UserModal = ({ user, companies, isOpen, onClose, onSubmit }) => {
             <InputGroup>
                 <InputLeftAddon key={``} children={label} />
                 <Select value={userObject?.company?.id} onChange={event => handleCompanyChange(event)}>
+                    <option value={undefined} />
                     {companies.map(c => (
                         <option value={c.id}>{c.name}</option>
                     ))}

@@ -63,7 +63,7 @@ export const MainView = () => {
                 : checkedUsers.filter(c => c.id !== id)
         );
     };
-    console.log('users', users);
+
     return (
         <div className="main-view-container">
             <div className="navbar-container">
