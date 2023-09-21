@@ -10,6 +10,8 @@ docker-compose build && docker-compose up db -d && sleep 2 && docker-compose up
 The LoadUsers button fetches the user information from the given API and loads it into the database,
 after which it can be modified via UI.
 
+Open the user modification modal by clicking on the user row.
+
 Delete works by selecting wanted rows from the checkboxes on the left and clicking delete button.
 
 The ui-standalone directory contains only ui with no backend, which fetches the user information from
