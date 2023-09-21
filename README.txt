@@ -15,3 +15,5 @@ Delete works by selecting wanted rows from the checkboxes on the left and clicki
 The ui-standalone directory contains only ui with no backend, which fetches the user information from
 the given requirements url into the reducer, the functionality modifies the data within reducer.
 This was added to fulfill the requirements, with the main weight being on the dockerized solution.
+
+The ui-standalone can be started with npm start.
