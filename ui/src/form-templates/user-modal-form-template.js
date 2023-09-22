@@ -46,7 +46,7 @@ export const userModalFormTemplate = [
     {
         label: 'Company Name',
         field: 'company.name'
-    }, 
+    },
     {
         label: 'Company catch phrase',
         field: 'company.catchPhrase',

@@ -28,7 +28,7 @@ export class UserManagementService {
         return this.companyRepository.find();
     }
 
-    async create(addUsersDto: User[]): Promise<void> {
+    async upsert(addUsersDto: User[]): Promise<void> {
         for (const user of addUsersDto) {
             const userToSave = { ...user };
 

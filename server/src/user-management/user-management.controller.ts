@@ -22,10 +22,10 @@ export class UserManagementController {
         return this.userManagementService.findAllCompanies();
     }
 
-    @Post('/add')
+    @Post('/upsert')
     async postUsers(@Body() addUsersDto: User[]): Promise<void> {
         console.debug('Posting users', addUsersDto);
-        return this.userManagementService.create(addUsersDto);
+        return this.userManagementService.upsert(addUsersDto);
     }
 
     @Post('/delete')

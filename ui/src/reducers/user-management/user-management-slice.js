@@ -13,7 +13,7 @@ const { backendBaseUrl, dataApi } = apiUrls;
 
 export const fetchExternalUsers = createAsyncThunk(dataApi, async () => {
     const res = await axios.get(`${dataApi}`);
-    await axios.post(`${backendBaseUrl}/usermanagement/add`, res.data?.map(d => {
+    await axios.post(`${backendBaseUrl}/usermanagement/upsert`, res.data?.map(d => {
         const { id, ...rest } = d;
         return {
             externalId: id,
@@ -27,8 +27,8 @@ export const fetchUsers = createAsyncThunk('/usermanagement/find', async () => {
     return res.data;
 });
 
-export const postUsers = createAsyncThunk('/usermanagement/add', async (data) => {
-    const res = await axios.post(`${backendBaseUrl}/usermanagement/add`, data);
+export const postUsers = createAsyncThunk('/usermanagement/upsert', async (data) => {
+    const res = await axios.post(`${backendBaseUrl}/usermanagement/upsert`, data);
     return res.data;
 });
 
