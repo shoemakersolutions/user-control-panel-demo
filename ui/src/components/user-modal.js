@@ -79,12 +79,12 @@ export const UserModal = ({ user, companies, isOpen, onClose, onSubmit }) => {
     const companyDropdown = (fieldTemplate) => {
         const { label } = fieldTemplate;
         return (
-            <InputGroup>
-                <InputLeftAddon key={``} children={label} />
-                <Select value={userObject?.company?.id} onChange={event => handleCompanyChange(event)}>
-                    <option value={undefined} />
-                    {companies.map(c => (
-                        <option value={c.id}>{c.name}</option>
+            <InputGroup key='company-input-group'>
+                <InputLeftAddon key={`label_${fieldTemplate?.field}`} children={label} />
+                <Select key='company-select' value={userObject?.company?.id} onChange={event => handleCompanyChange(event)}>
+                    <option key='company-option-empty' value={undefined} />
+                    {companies.map((c, idx) => (
+                        <option key={`company-option-${idx}`} value={c.id}>{c.name}</option>
                     ))}
                 </Select>
             </InputGroup>
